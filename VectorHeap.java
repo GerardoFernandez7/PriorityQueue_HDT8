@@ -1,20 +1,34 @@
 import java.util.Vector;
 
+/**
+ * Esta clase implementa una cola con prioridad utilizando un vector subyacente.
+ * Utiliza un heap para mantener la estructura de datos y asegurar la prioridad de los elementos.
+ * @param <E> El tipo de elementos en la cola con prioridad, que debe ser comparable.
+ */
 public class VectorHeap<E extends Comparable<E>> {
     protected Vector<E> data;
 
-    // Constructor
+    /**
+     * Constructor para crear una nueva instancia de VectorHeap.
+     * Inicializa el vector de datos como vacío.
+     */
     public VectorHeap() {
         data = new Vector<>();
     }
 
-    // Insertar un elemento en la cola con prioridad
+    /**
+     * Agrega un elemento a la cola con prioridad.
+     * @param item El elemento que se va a agregar a la cola con prioridad.
+     */
     public void add(E item) {
         data.add(item);
         percolateUp(data.size() - 1);
     }
 
-    // Eliminar y devolver el elemento de mayor prioridad
+    /**
+     * Elimina y devuelve el elemento de mayor prioridad de la cola con prioridad.
+     * @return El elemento de mayor prioridad, o null si la cola está vacía.
+     */
     public E remove() {
         if (data.isEmpty())
             return null;
@@ -26,7 +40,10 @@ public class VectorHeap<E extends Comparable<E>> {
         return minVal;
     }
 
-    // Reorganizar hacia arriba
+    /**
+     * Reorganiza el heap hacia arriba para mantener la propiedad de heap después de agregar un elemento.
+     * @param leaf El índice del nodo que se está insertando en el heap.
+     */
     protected void percolateUp(int leaf) {
         int parent = (leaf - 1) / 2;
         E value = data.get(leaf);
@@ -38,7 +55,10 @@ public class VectorHeap<E extends Comparable<E>> {
         data.set(leaf, value);
     }
 
-    // Reorganizar hacia abajo
+    /**
+     * Reorganiza el heap hacia abajo para mantener la propiedad de heap después de eliminar el elemento de mayor prioridad.
+     * @param root El índice del nodo raíz del heap.
+     */
     protected void pushDownRoot(int root) {
         E value = data.get(root);
         int heapSize = data.size();
@@ -62,7 +82,19 @@ public class VectorHeap<E extends Comparable<E>> {
         }
     }
 
+    /**
+     * Comprueba si la cola con prioridad está vacía.
+     * @return true si la cola está vacía, false si contiene elementos.
+     */
     public boolean isEmpty() {
         return data.isEmpty();
     }    
+
+     /**
+     * Obtiene el tamaño de la cola con prioridad.
+     * @return El número de elementos en la cola con prioridad.
+     */
+    public int size() {
+        return data.size();
+    }
 }

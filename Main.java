@@ -2,8 +2,17 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
+/**
+ * Esta clase contiene el método principal para ejecutar el sistema de atención de pacientes en la sección de Emergencias de un hospital.
+ * Lee los datos de un archivo de texto, crea instancias de pacientes y los agrega a una cola con prioridad, luego muestra los pacientes al médico en orden de prioridad.
+ */
 public class Main {
 
+    /**
+     * Método principal que ejecuta el sistema de atención de pacientes en la sección de Emergencias de un hospital.
+     * Lee los datos de un archivo de texto, crea instancias de pacientes y los agrega a una cola con prioridad, luego muestra los pacientes al médico en orden de prioridad.
+     * @param args Los argumentos de la línea de comandos (no utilizados).
+     */
     public static void main(String[] args) {
         // Lectura del archivo pacientes.txt y procesamiento de los datos
         try {
